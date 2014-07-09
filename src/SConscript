@@ -1,0 +1,6 @@
+Import('env')
+
+Sconscript("DataCollect", 
+           variant_dir='DataCollect',
+           duplicate=False,
+           exports="env")
