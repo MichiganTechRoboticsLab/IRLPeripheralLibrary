@@ -52,6 +52,13 @@ public:
      * gets a setting value based on a key
      */
     virtual const std::string& getSetting(const std::string& key) = 0;
+    
+    /**
+     * imageAvailable
+     * 
+     * tells if a image is available to grab
+     */
+    virtual bool imageAvailable(void) = 0;
 };
 
 }

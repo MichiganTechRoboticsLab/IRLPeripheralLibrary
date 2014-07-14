@@ -25,7 +25,7 @@ public:
     struct Data
     {
         IMUDataType type;
-        union
+        union 
         {
             triple<float> magnetic;
             triple<float> acceleration;

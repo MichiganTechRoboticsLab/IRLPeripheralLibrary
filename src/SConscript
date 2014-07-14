@@ -1,6 +1,8 @@
-Import('env')
+Import('*')
 
-Sconscript("DataCollect", 
-           variant_dir='DataCollect',
-           duplicate=False,
+print 'Adding Devices and Main Program'
+
+SConscript("Device/SConscript", exports='env')
+
+SConscript("DataCollect/SConscript",
            exports="env")

@@ -1,21 +1,27 @@
+import os
 # Set up build dir
 AddOption(
   '--release',
-  action-'store_true',
+  action='store_true',
   help='release build',
   default=False)
 
 # Set up Construction Environment
 env = Environment()
 
-env.ParseFlags()
+env.Append(CPPPATH = [os.getcwd() + '/include'])
+
+variant_dir = os.getcwd()+ '/'
+
 if GetOption('release'):
-    variant_dir = 'build/release'
+    variant_dir += 'build/release'
 else:
     env.ParseFlags('-DDEBUG -g')
-    variant_dir = 'build/debug'
+    variant_dir += 'build/debug'
+
+env.Append(LIBPATH = [variant_dir + '/devices'])
     
-SConscript(dirs='src/SConscript',
+SConscript('src/SConscript',
            variant_dir=variant_dir,
            duplicate=False,
-           exports="env")
+           exports="env variant_dir")

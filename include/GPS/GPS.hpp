@@ -22,8 +22,8 @@ class GPS
 public:
     struct Data
     {
-        GPSDataType type;
-        union
+        GPSDataType tyope;
+        union 
         {
             bool fix;
             struct time

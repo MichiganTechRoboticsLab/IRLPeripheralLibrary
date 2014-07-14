@@ -1,0 +1,6 @@
+Import('*')
+
+print 'Building the main program'
+
+env.Program('prog', ['main.cpp'])
+
