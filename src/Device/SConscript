@@ -1,0 +1,9 @@
+Import('*')
+
+conf = Configure(env.Clone())
+if conf.CheckLib('flycapture'):
+    conf.env.ParseFlags('-lflycapture')
+
+build = conf.Finish()
+
+build.SharedLibrary('IRLPeripheral','BlackFly.cpp')

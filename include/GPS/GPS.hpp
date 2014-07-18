@@ -23,7 +23,7 @@ public:
     struct Data
     {
         GPSDataType tyope;
-        union 
+        union
         {
             bool fix;
             struct time

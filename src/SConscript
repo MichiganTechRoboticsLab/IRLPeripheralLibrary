@@ -2,7 +2,9 @@ Import('*')
 
 print 'Adding Devices and Main Program'
 
+
 SConscript("Device/SConscript", exports='env')
+
 
 SConscript("DataCollect/SConscript",
            exports="env")

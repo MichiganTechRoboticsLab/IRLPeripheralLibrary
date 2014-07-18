@@ -1,8 +1,9 @@
 #ifndef UTIL_HPP
 #define UTIL_HPP
 
-namespace IRL {
-    
+namespace IRL
+{
+
 
 template <T>
 struct triple
