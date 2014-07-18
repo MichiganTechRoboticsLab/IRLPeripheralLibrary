@@ -1,0 +1,23 @@
+Import('*')
+
+conf = env.Configure()
+
+if conf.CheckLib('pthread'):
+    conf.env.Append(LIBS=['pthread'])
+else:
+    Exit(1)
+        
+build = conf.Finish()
+build['CC'] = 'g++'
+sources = ["vectornav/vn200.c",
+           "vectornav/vn100.c",
+           'vectornav/arch/linux/vncp_services.c',
+           'vectornav/vndevice.c'
+           ]
+libvectornav = build.SharedLibrary('vectornav',sources)
+
+
+build.Install(lib_dir, libvectornav)
+build.Alias("vectornav", libvectornav)
+
+

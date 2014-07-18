@@ -3,7 +3,23 @@ Import('*')
 conf = Configure(env.Clone())
 if conf.CheckLib('flycapture'):
     conf.env.ParseFlags('-lflycapture')
+else:
+    Exit(1)
 
+if conf.CheckLib('urg_cpp'):
+    conf.env.ParseConfig('urg_cpp-config --cflags --libs')
+else:
+    Exit(1)
+    
 build = conf.Finish()
 
-build.SharedLibrary('IRLPeripheral','BlackFly.cpp')
+lib = ['vectornav']
+
+sources = ['BlackFly.cpp',
+           'Hokuyo.cpp'
+           ]
+
+irlperiph = build.SharedLibrary('IRLPeripheral',sources, LIBS=lib)
+
+build.Install(lib_dir, irlperiph)
+build.Alias("IRLPeripheral", irlperiph)

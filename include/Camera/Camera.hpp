@@ -18,7 +18,7 @@ class Camera
 protected:
     bool _started = false;
 public:
-    
+
     virtual ~Camera() {}
 
     /**
@@ -47,7 +47,7 @@ public:
      *
      * sets a setting based on a key value pair
      */
-    virtual void setSetting(const std::string& key, const std::string& value) = 0;
+    virtual bool setSetting(const std::string& key, const std::string& value) = 0;
 
     /**
      * getSetting
@@ -64,8 +64,11 @@ public:
     virtual bool imageAvailable(void) = 0;
 
     virtual uint32_t getNumberOfCameras(void) = 0;
-    
-    virtual inline bool isStarted(void) { return _started; }
+
+    virtual inline bool isStarted(void)
+    {
+        return _started;
+    }
 };
 
 }

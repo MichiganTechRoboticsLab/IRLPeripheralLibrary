@@ -3,8 +3,10 @@ Import('*')
 print 'Adding Devices and Main Program'
 
 
-SConscript("Device/SConscript", exports='env')
+SConscript("Device/SConscript", exports='env lib_dir bin_dir')
 
 
 SConscript("DataCollect/SConscript",
-           exports="env")
+           exports="env lib_dir bin_dir")
+
+SConscript("thirdparty/SConscript",exports="env lib_dir bin_dir")

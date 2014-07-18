@@ -21,7 +21,7 @@ public:
     void setup(uint16_t camera = 0);
     void cleanup(void);
     int captureImage(uint8_t* image);
-    void setSetting(const std::string& key, const std::string& value);
+    bool setSetting(const std::string& key, const std::string& value);
     const std::string getSetting(const std::string& key);
     bool imageAvailable(void);
     uint32_t getNumberOfCameras(void);
