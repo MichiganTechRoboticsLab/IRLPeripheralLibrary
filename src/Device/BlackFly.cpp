@@ -40,26 +40,26 @@ namespace IRL
         return false;
     }
 
-    uint32_t getNumberOfCameras(void)
+    uint32_t BlackFly::getNumberOfCameras(void)
     {
         return 0;
     }
 
-    void printBuildInfo()
+    void BlackFly::printBuildInfo()
     {
 
     }
 
-    void printCameraInfo(const FlyCapture2::CameraInfo& rCamInfo)
+    void BlackFly::printCameraInfo(const FlyCapture2::CameraInfo& rCamInfo)
     {
 
     }
-    void printFormat7Capablities(const FlyCapture2::Format7Info& fmt7info)
+    void BlackFly::printFormat7Capablities(const FlyCapture2::Format7Info& fmt7info)
     {
 
     }
 
-    uint32_t discoverCameras(std::vector<FlyCapture2::CameraInfo>& camInfo)
+    uint32_t BlackFly::discoverCameras(std::vector<FlyCapture2::CameraInfo>& camInfo)
     {
         return 0;
     }

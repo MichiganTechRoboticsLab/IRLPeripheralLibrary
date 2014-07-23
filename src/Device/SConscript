@@ -1,28 +1,43 @@
 Import('*')
 
-conf = Configure(env.Clone())
-if conf.CheckLib('flycapture'):
-    conf.env.ParseFlags('-lflycapture')
-else:
-    Exit(1)
+from util import *
 
-if conf.CheckLib('urg_cpp'):
-    conf.env.ParseConfig('urg_cpp-config --cflags --libs')
-else:
-    Exit(1)
-    
+found = True
+
+buildName = 'IRLPeripheral'
+trueName = 'IRL Peripheral Library'
+
+
+conf = Configure(env.Clone())
+if not env.GetOption('clean'):
+    printInfo('Configuring ' + trueName)
+    # Check For Librarys
+    found = conf.CheckLib('flycapture', language='C++')
+    found = conf.CheckLib('urg_cpp', language='C++')
+        
 build = conf.Finish()
 
-lib = ['vectornav',
-       'IRLUtil'
-       ]
+if found:
+    if not env.GetOption('clean'):
+        printSuccess('IRL Peripheral Library is being built')
 
-sources = ['BlackFly.cpp',
-           'Hokuyo.cpp',
-           'VN200.cpp'
-           ]
+    lib = ['vectornav',
+           'IRLUtil'
+          ]
 
-irlperiph = build.SharedLibrary('IRLPeripheral',sources, LIBS=lib)
+    sources = ['BlackFly.cpp',
+               'Hokuyo.cpp',
+               'VN200.cpp'
+              ]
+    
+    build.Append(LIBS = lib)
+    build.ParseConfig('urg_cpp-config --cflags')
 
-build.Install(lib_dir, irlperiph)
-build.Alias("IRLPeripheral", irlperiph)
+    irlperiph = build.SharedLibrary(buildName,sources)
+
+    build.Install(lib_dir, irlperiph)
+    build.Alias(buildName, irlperiph)
+else:
+     printError(trueName + ' is not being built')
+if not env.GetOption('clean'):
+    print ''

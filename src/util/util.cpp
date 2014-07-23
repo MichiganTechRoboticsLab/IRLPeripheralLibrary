@@ -8,14 +8,14 @@ namespace IRL
     namespace Util
     {
 
-        std::string lowercase(const std::string str)
+        std::string lowercase(const std::string& str)
         {
             std::string retStr(str);
             std::transform(retStr.begin(), retStr.end(), retStr.begin(), ::tolower);
             return retStr;
         }
 
-        bool isInt(const std::string str)
+        bool isInt(const std::string& str)
         {
             try
             {

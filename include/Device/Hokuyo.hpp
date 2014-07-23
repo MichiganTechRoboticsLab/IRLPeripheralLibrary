@@ -28,7 +28,7 @@ namespace IRL
             hevStable
         };
 
-        static std::unordered_map<std::string, hSetting> m_trans;
+        std::unordered_map<std::string, hSetting> m_trans;
 
         std::map<hSetting,std::string> m_settings;
 

@@ -1,5 +1,6 @@
 import sys
 import os
+from util import *
 
 # Set up build dir
 AddOption(
@@ -7,6 +8,13 @@ AddOption(
     action='store_true',
     help='release build',
     default=False)
+
+AddOption(
+    '--verbose',
+    action='store_true',
+    help='Display verbose build',
+    default=True
+    )
 
 
 
@@ -45,18 +53,21 @@ link_shared_library_message = '%sLinking Shared Library %s==> %s$TARGET%s' % \
 java_library_message = '%sCreating Java Archive %s==> %s$TARGET%s' % \
    (colors['red'], colors['purple'], colors['yellow'], colors['end'])
 
-env = Environment(
-  CXXCOMSTR = compile_source_message,
-  CCCOMSTR = compile_source_message,
-  SHCCCOMSTR = compile_shared_source_message,
-  SHCXXCOMSTR = compile_shared_source_message,
-  ARCOMSTR = link_library_message,
-  RANLIBCOMSTR = ranlib_library_message,
-  SHLINKCOMSTR = link_shared_library_message,
-  LINKCOMSTR = link_program_message,
-  JARCOMSTR = java_library_message,
-  JAVACCOMSTR = compile_source_message
-)
+if not GetOption('verbose'):
+    env = Environment(
+    CXXCOMSTR = compile_source_message,
+    CCCOMSTR = compile_source_message,
+    SHCCCOMSTR = compile_shared_source_message,
+    SHCXXCOMSTR = compile_shared_source_message,
+    ARCOMSTR = link_library_message,
+    RANLIBCOMSTR = ranlib_library_message,
+    SHLINKCOMSTR = link_shared_library_message,
+    LINKCOMSTR = link_program_message,
+    JARCOMSTR = java_library_message,
+    JAVACCOMSTR = compile_source_message
+    )
+else:
+    env = Environment()
 
 # Set up Construction Environment
 

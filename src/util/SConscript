@@ -1,20 +1,29 @@
+from util import *
 Import('*')
 
-conf = env.Configure()
+found = True
+buildName = 'IRLUtil'
+trueName = 'IRL Utilities Library'
 
-if conf.CheckLib('pthread'):
-    conf.env.Append(LIBS=['pthread'])
-else:
-    Exit(1)
-        
+
+conf = Configure(env.Clone())
+if not env.GetOption('clean'):
+    printInfo('Configuring ' + trueName)
+    # Check For Librarys
+    print 'Nothing to Check'   
 build = conf.Finish()
-#build['CC'] = 'g++'
-sources = ["util.cpp"
-           ]
-libutil = build.SharedLibrary('IRLUtil',sources)
+
+if found:
+    if not env.GetOption('clean'):
+        printSuccess(trueName + ' is being built')
+    sources = ["util.cpp"
+            ]
+    libutil = build.SharedLibrary(buildName,sources)
 
 
-build.Install(lib_dir, libutil)
-build.Alias("util", libutil)
-
-
+    build.Install(lib_dir, libutil)
+    build.Alias(buildName, libutil)
+else:
+     printError(trueName + ' is not being built')
+if not env.GetOption('clean'):
+    print ''

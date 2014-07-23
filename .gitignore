@@ -79,6 +79,7 @@ tramp
 *.lo
 *.o
 *.obj
+bin/
 
 # Compiled Dynamic libraries
 *.so
