@@ -1,0 +1,20 @@
+Import('*')
+
+conf = env.Configure()
+
+if conf.CheckLib('pthread'):
+    conf.env.Append(LIBS=['pthread'])
+else:
+    Exit(1)
+        
+build = conf.Finish()
+#build['CC'] = 'g++'
+sources = ["util.cpp"
+           ]
+libutil = build.SharedLibrary('IRLUtil',sources)
+
+
+build.Install(lib_dir, libutil)
+build.Alias("util", libutil)
+
+

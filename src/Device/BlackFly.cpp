@@ -2,66 +2,66 @@
 
 namespace IRL
 {
-BlackFly::~BlackFly()
-{
-    cleanup();
-}
+    BlackFly::~BlackFly()
+    {
+        cleanup();
+    }
 
-void BlackFly::setup(uint16_t camera)
-{
+    void BlackFly::setup(uint16_t camera)
+    {
 
-    _started = 0;
-}
+        _started = 0;
+    }
 
-void BlackFly::cleanup()
-{
+    void BlackFly::cleanup()
+    {
 
-}
+    }
 
 
-int BlackFly::captureImage(uint8_t *image)
-{
-    return 0;
-}
+    int BlackFly::captureImage(uint8_t *image)
+    {
+        return 0;
+    }
 
-bool BlackFly::setSetting(const std::string& key, const std::string& value)
-{
-    return false;
-}
+    bool BlackFly::setSetting(const std::string& key, const std::string& value)
+    {
+        return false;
+    }
 
-const std::string BlackFly::getSetting(const std::string& key)
-{
-    std::string test = "";
-    return test;
-}
+    const std::string BlackFly::getSetting(const std::string& key)
+    {
+        std::string test = "";
+        return test;
+    }
 
-bool BlackFly::imageAvailable(void)
-{
-    return false;
-}
+    bool BlackFly::imageAvailable(void)
+    {
+        return false;
+    }
 
-uint32_t getNumberOfCameras(void)
-{
-    return 0;
-}
+    uint32_t getNumberOfCameras(void)
+    {
+        return 0;
+    }
 
-void printBuildInfo()
-{
+    void printBuildInfo()
+    {
 
-}
+    }
 
-void printCameraInfo(const FlyCapture2::CameraInfo& rCamInfo)
-{
+    void printCameraInfo(const FlyCapture2::CameraInfo& rCamInfo)
+    {
 
-}
-void printFormat7Capablities(const FlyCapture2::Format7Info& fmt7info)
-{
+    }
+    void printFormat7Capablities(const FlyCapture2::Format7Info& fmt7info)
+    {
 
-}
+    }
 
-uint32_t discoverCameras(std::vector<FlyCapture2::CameraInfo>& camInfo)
-{
-    return 0;
-}
+    uint32_t discoverCameras(std::vector<FlyCapture2::CameraInfo>& camInfo)
+    {
+        return 0;
+    }
 
 }

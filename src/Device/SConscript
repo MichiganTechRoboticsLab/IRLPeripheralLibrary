@@ -13,10 +13,13 @@ else:
     
 build = conf.Finish()
 
-lib = ['vectornav']
+lib = ['vectornav',
+       'IRLUtil'
+       ]
 
 sources = ['BlackFly.cpp',
-           'Hokuyo.cpp'
+           'Hokuyo.cpp',
+           'VN200.cpp'
            ]
 
 irlperiph = build.SharedLibrary('IRLPeripheral',sources, LIBS=lib)
