@@ -13,7 +13,7 @@ AddOption(
     '--verbose',
     action='store_true',
     help='Display verbose build',
-    default=True
+    default=False
     )
 
 
@@ -80,7 +80,7 @@ variant_dir = '#/'
 if GetOption('release'):
     variant_dir += 'build/release'
 else:
-    env.Append(CCFLAGS = ["-DDEBUG","-g"])
+    env.Append(CCFLAGS = ["-DDEBUG","-g", '-O0'])
     variant_dir += 'build/debug'
 
 

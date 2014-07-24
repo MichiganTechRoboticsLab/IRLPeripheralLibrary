@@ -9,7 +9,3 @@ SConscript("util/SConscript",exports="env lib_dir bin_dir")
 SConscript("Device/SConscript", exports='env lib_dir bin_dir')
 
 SConscript("Programs/SConscript", exports="env lib_dir bin_dir")
-
-
-
-

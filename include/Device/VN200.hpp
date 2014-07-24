@@ -3,12 +3,24 @@
 
 #include <GPS/GPS.hpp>
 #include <IMU/IMU.hpp>
+#include <map>
+#include <unordered_map>
 
 namespace IRL
 {
     class VN200 : public GPS, public IMU
     {
     private:
+        enum vSetting
+        {
+
+        };
+
+        std::unordered_map<std::string, vSetting> m_trans;
+
+        std::map<vSetting,std::string> m_settings;
+
+
 
     public:
         VN200() {}
