@@ -13,7 +13,7 @@ namespace IRL
     {
 
     private:
-        enum hSetting
+        enum class hSetting
         {
             hevUndefined,
             hevDeviceName,

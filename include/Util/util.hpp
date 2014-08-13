@@ -19,6 +19,8 @@ namespace IRL
         std::string lowercase(const std::string& str);
 
         bool isInt(const std::string& str);
+
+
     }
 }
 

@@ -31,8 +31,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "vn200.h"
-#include "vn_errorCodes.h"
+#include <thirdparty/vectornav/vn200.h>
+#include <thirdparty/vectornav/vn_errorCodes.h>
 
 /* Defines and constants. ****************************************************/
 

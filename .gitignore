@@ -1,9 +1,13 @@
 # Created by http://www.gitignore.io
 
+*.autosave
+
 ### Kate ###
 # Swap Files #
 .*.kate-swp
 .swp.*
+.kateproject
+.kateproject.d/
 
 
 ### vim ###

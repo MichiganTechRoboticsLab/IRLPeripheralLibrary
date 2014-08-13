@@ -27,7 +27,7 @@ namespace IRL
             GPSDataType type;
             union
             {
-                bool fix;
+                uint8_t fix;
                 struct
                 {
                     uint64_t second;
@@ -48,7 +48,7 @@ namespace IRL
 
             Data() : type(GPSDataType::UNKNOWN) {}
 
-            Data(bool _fix)
+            Data(uint8_t _fix)
             {
                 type = GPSDataType::FIX;
                 fix = _fix;
@@ -94,7 +94,7 @@ namespace IRL
         };
 
         virtual ~GPS() {}
-        virtual void setup(void) = 0;
+        virtual bool setup(void) = 0;
         virtual void cleanup(void) = 0;
         virtual GPS::Data hasGPSFix(void) = 0;
         virtual GPS::Data getGPSTime(void) = 0;

@@ -38,7 +38,7 @@ namespace IRL
         };
 
         virtual ~IMU() {}
-        virtual void setup(void) = 0;
+        virtual bool setup(void) = 0;
         virtual void cleanup(void) = 0;
         virtual IMU::Data getGyro(void) = 0;
         virtual IMU::Data getAcceleration(void) = 0;
