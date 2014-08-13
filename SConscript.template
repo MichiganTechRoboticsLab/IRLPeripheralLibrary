@@ -1,0 +1,62 @@
+from util import *
+Import('*')
+#############################`
+###  SConscripts Template ###`
+###   Fill in the blanks  ###`
+###  library/program name ###`
+#############################`
+
+found = True   #<! if true then build, else no build
+
+
+buildName = '' #<! name of the output library/program
+trueName = ''  #<! human readable name
+library = True #<! if true compile as libary, else program
+install_dir = lib_dir
+
+
+
+conf = Configure(env.Clone())
+if not env.GetOption('clean'):
+    printInfo('Configuring ' + trueName)
+    # Check For Librarys
+    found = ...
+    # Check For Headers
+    found = ...
+    # Check For functions
+    found = ...
+build = conf.Finish()
+
+if found:
+    if not env.GetOption('clean'):
+        printSuccess(trueName + ' is being built')
+    
+    
+    libs = [] #<! Project Librarys that ARE NOT in the conf check
+    
+    cppflags = [] #<! Addtional C++ Flags
+    
+    cflags = [] #<! Additional C Flags
+    
+    ccflags = [] #<! Additional CC Flags
+    
+    sources = [] #<! Source files
+    
+    build.Append(LIBS = libs, CPPFLAGS = cppflags, CFLAGS = cflags, CCFLAGS = ccflags)
+    
+    ### Addition Flags and stuff that are easier outside of the arrays ###`
+    # build.ParseConfig()
+    
+    if library:
+        out = build.SharedLibrary(buildName,sources)
+    else:
+        out = build.Program(buildName,sources)
+        install_dir = bin_dir
+
+    build.Install(install_dir, out)
+    build.Alias(buildName, out)
+else:
+     printError(trueName + ' is not being built')
+
+ if not env.GetOption('clean'):
+    print ''

@@ -1,0 +1,34 @@
+from util import *
+Import('*')
+
+found = True
+buildName = 'vectornav'
+trueName = 'VectorNav Library'
+
+
+conf = Configure(env.Clone())
+if not env.GetOption('clean'):
+    printInfo('Configuring ' + trueName)
+    # Check For Librarys
+    found = conf.CheckLib('pthread', language='C++')
+        
+build = conf.Finish()
+
+if found:
+    if not env.GetOption('clean'):
+        printSuccess(trueName + ' is being built')
+    build['CC'] = 'g++'
+    sources = ["vectornav/vn200.c",
+            "vectornav/vn100.c",
+            'vectornav/arch/linux/vncp_services.c',
+            'vectornav/vndevice.c'
+            ]
+    libvectornav = build.SharedLibrary(buildName,sources)
+
+
+    build.Install(lib_dir, libvectornav)
+    build.Alias(buildName, libvectornav)
+else:
+    printError(trueName + ' is not being built')
+if not env.GetOption('clean'):
+    print ''

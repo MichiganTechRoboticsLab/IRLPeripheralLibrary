@@ -1,0 +1,66 @@
+from util import *
+Import('*')
+#############################`
+###  SConscripts Template ###`
+###   Fill in the blanks  ###`
+###  library/program name ###`
+#############################`
+
+found = True   #<! if true then build, else no build
+
+
+buildName = 'test' #<! name of the output library/program
+trueName = 'Test Program'  #<! human readable name
+library = False #<! if true compile as libary, else program
+
+
+conf = Configure(env.Clone())
+if not env.GetOption('clean'):
+    printInfo('Configuring ' + trueName)
+    # Check For Librarys
+    found = conf.CheckLib('flycapture', language='C++')
+    found = conf.CheckLib('urg_cpp', language='C++')
+    found = conf.CheckLib('pthread')
+    # Check For Headers
+    # found = ...
+    # Check For functions
+    # found = ...
+build = conf.Finish()
+
+if found:
+    if not env.GetOption('clean'):
+        printSuccess(trueName + ' is being built')
+    
+    
+    libs = ['IRLPeripheral',
+            'vectornav',
+            'IRLUtil',
+            ] #<! Project Librarys that ARE NOT in the conf check
+    
+    cppflags = [] #<! Addtional C++ Flags
+    
+    cflags = [] #<! Additional C Flags
+    
+    ccflags = [] #<! Additional CC Flags
+    
+    sources = ['main.cpp'] #<! Source files
+    
+    build.Append(LIBS = libs, CPPFLAGS = cppflags, CFLAGS = cflags, CCFLAGS = ccflags)
+    
+    ### Addition Flags and stuff that are easier outside of the arrays ###`
+    # build.ParseConfig()
+    
+    if library:
+        out = build.SharedLibrary(buildName,sources)
+        install_dir = lib_dir
+    else:
+        out = build.Program(buildName,sources)
+        install_dir = bin_dir
+
+    build.Install(install_dir, out)
+    build.Alias(buildName, out)
+else:
+     printError(trueName + ' is not being built')
+if not env.GetOption('clean'):
+    print ''
+ 
